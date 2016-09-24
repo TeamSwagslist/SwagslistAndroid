@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import com.aidancbrady.swagslist.EventEntry;
 
 public class AddEvent extends AppCompatActivity {
 
@@ -26,8 +28,14 @@ public class AddEvent extends AppCompatActivity {
         EditText eventdescription = (EditText) findViewById(R.id.eventDescription);
         eventDescription = eventdescription.getText().toString();
 
-        RadioButton sponsor = (RadioButton) findViewById(R.id.sponsoredEvent);
+        CheckBox sponsor = (CheckBox) findViewById(R.id.sponsoredEvent);
         isSponsor = sponsor.isChecked();
+
+        EventEntry newEntry = new EventEntry();
+
+        newEntry.setName(eventName);
+        newEntry.setDescription(eventDescription);
+        newEntry.setPremium(isSponsor);
 
         goToMaps(view);
     }

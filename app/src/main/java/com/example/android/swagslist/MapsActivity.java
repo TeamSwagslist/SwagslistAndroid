@@ -10,9 +10,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, OnMarkerClickListener {
 
     private GoogleMap mMap;
 
@@ -45,12 +48,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
+        mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Intent intent = new Intent(MapsActivity.this, EditEvent.class);
+
+                startActivity(intent);
+                return false;
+            }
+        });
+
+    }
+
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        return false;
     }
 
     public void goToAddEvent (View view) {
         Intent intent = new Intent(this, AddEvent.class);
 
         startActivity(intent);
+    }
+
+    public void goToEditEvent (View view) {
+        Intent intent = new Intent(this, EditEvent.class);
+
+        startActivity(intent);
+
     }
 
 
