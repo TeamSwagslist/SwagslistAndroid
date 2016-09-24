@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.aidancbrady.swagslist.Account;
+import com.aidancbrady.swagslist.client.ClientNetworkHandler;
 
 public class RegisterPage extends AppCompatActivity {
 
@@ -16,22 +17,26 @@ public class RegisterPage extends AppCompatActivity {
         setContentView(R.layout.activity_register_page);
     }
 
-    String username;
-    String password;
-    String repassword;
-
     public void setData (View view) {
         EditText usernameBox = (EditText) findViewById(R.id.usernameInput);
-        username = usernameBox.getText().toString();
+        String username = usernameBox.getText().toString();
 
         EditText passwordBox = (EditText) findViewById(R.id.passwordInput);
-        password = passwordBox.getText().toString();
+        String password = passwordBox.getText().toString();
 
         EditText repasswordBox = (EditText) findViewById(R.id.repasswordInput);
-        repassword = repasswordBox.getText().toString();
+        String repassword = repasswordBox.getText().toString();
 
         if (repassword.equals(password)) {
-            goToMaps(view);
+            ClientNetworkHandler.Response response = ClientNetworkHandler.register(username, password);
+
+            if(response.accept) {
+                goToMaps(view);
+            }
+            else {
+                TextView textBox = (TextView) findViewById(R.id.textBox);
+                textBox.setText(response.message);
+            }
         }
         else {
             TextView textBox = (TextView) findViewById(R.id.textBox);

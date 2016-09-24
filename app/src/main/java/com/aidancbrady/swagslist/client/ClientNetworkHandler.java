@@ -47,7 +47,7 @@ public class ClientNetworkHandler
 		return null;
 	}
 	
-	public Set<EventEntry> getEvents()
+	public static Set<EventEntry> getEvents()
 	{
 		Set<EventEntry> ret = new HashSet<EventEntry>();
 		List<String> response = sendMessages("LISTENTRIES");
@@ -74,7 +74,7 @@ public class ClientNetworkHandler
 		return ret;
 	}
 	
-	public Response login(String username, String password)
+	public static Response login(String username, String password)
 	{
 		List<String> response = sendMessages("AUTH," + username + "," + password);
 		
@@ -100,7 +100,7 @@ public class ClientNetworkHandler
 		return Response.ERROR;
 	}
 	
-	public Response register(String username, String password)
+	public static Response register(String username, String password)
 	{
 		List<String> response = sendMessages("REGISTER," + username + "," + password);
 		
@@ -126,7 +126,7 @@ public class ClientNetworkHandler
 		return Response.ERROR;
 	}
 	
-	public Response addEvent(EventEntry entry)
+	public static Response addEvent(EventEntry entry)
 	{
 		List<String> response = sendMessages("ADDEVENT," + entry.toCSV());
 		
@@ -143,7 +143,7 @@ public class ClientNetworkHandler
 		return Response.ERROR;
 	}
 	
-	public Response editEvent(String origName, EventEntry entry)
+	public static Response editEvent(String origName, EventEntry entry)
 	{
 		List<String> response = sendMessages("EDITEVENT," + origName + "," + entry.toCSV());
 		
