@@ -10,20 +10,39 @@
     android:orientation="vertical"
     tools:context="com.example.android.swagslist.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="You're using the main right now" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
+        android:textSize="14sp"
+        android:textColor="#616161"
+        android:fontFamily="sans-serif-medium"
+        android:textAllCaps="true"
         android:onClick="goToLoginPage"/>
+
+    <View
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/darker_gray"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Register"
+        android:textSize="14sp"
+        android:textColor="#616161"
+        android:fontFamily="sans-serif-medium"
+        android:textAllCaps="true"
         android:onClick="goToRegisterPage"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Direct"
+        android:onClick="goToMaps"/>
 </LinearLayout>

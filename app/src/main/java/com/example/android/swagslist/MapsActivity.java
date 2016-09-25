@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.aidancbrady.swagslist.client.ClientNetworkHandler;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -13,11 +14,18 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, OnMarkerClickListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, OnMarkerClickListener,OnInfoWindowClickListener {
 
     private GoogleMap mMap;
+
+    public GoogleMap getMap()
+    {
+        return mMap;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,23 +51,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        ClientNetworkHandler.refreshEvents(this);
+/*        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney").snippet("YOOOO"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
 
-        mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
+
+       /* mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
             @Override
-            public boolean onMarkerClick(Marker marker) {
-                Intent intent = new Intent(MapsActivity.this, EditEvent.class);
+            public void onInfoWindowClick(Marker marker) { //if SessionData.username == marker username, then go to Edit
+                Intent intent = new Intent(MapsActivity.this, MainActivity.class);
+
+
 
                 startActivity(intent);
-                return false;
-            }
-        });
 
+            }
+        });*/
     }
 
+    public void onActivityReenter(int result, Intent data)
+    {
+        ClientNetworkHandler.refreshEvents(this);
+    }
+
+
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        //just here for the info window click abstract shit.
+    }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
@@ -78,6 +99,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(intent);
 
     }
+
+    public void refresh (View view) {
+        ClientNetworkHandler.refreshEvents(this);
+    }
+
+/*    class CustomInfoWindowAdapter implements InfoWindowAdapter {
+        public View getInfoWindow(Marker marker) {
+            return null;
+        }
+        public View getInfoContents(Marker marker) {
+            return null;
+        }
+
+        private void render (Marker marker, View view) {
+            marker.setTitle("WOW");
+            marker.setSnippet("YAY");
+        }
+    }*/
+
+
 
 
 }

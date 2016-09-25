@@ -10,10 +10,19 @@
     tools:context="com.example.android.swagslist.AddEvent">
 
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/location"
+            android:text=""
+            android:fontFamily="sans-serif-medium"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -26,6 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint = "Event Description"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
             android:id="@+id/eventDescription"
             />
 
@@ -33,69 +44,138 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sponsored Event?"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="14sp"
             android:id="@+id/sponsoredEvent"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Food"
+                android:textSize="14sp"
+                android:textColor="#616161"
+                android:fontFamily="sans-serif-medium"
+                android:layout_alignParentRight="true"
                 android:id="@+id/food"/>
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Apparel"
+                android:textSize="14sp"
+                android:textColor="#616161"
+                android:fontFamily="sans-serif-medium"
+                android:layout_centerInParent="true"
                 android:id="@+id/apparel"/>
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Trinkets"
+                android:textSize="14sp"
+                android:textColor="#616161"
+                android:fontFamily="sans-serif-medium"
+                android:layout_alignParentLeft="true"
                 android:id="@+id/trinkets"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <Button
+            <View
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@android:color/darker_gray"
+                android:id="@+id/center"/>
+
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Set Start Time"
-                />
+                android:orientation="vertical"
+                android:layout_toLeftOf="@id/center">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set Start Time"
+                    android:textSize="14sp"
+                    android:textColor="#616161"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="onButtonClickedStart"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/startTime"
+                    android:textSize="56sp"
+                    android:textColor="#616161"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""/>;
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/center">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set End Time"
+                    android:textSize="14sp"
+                    android:textColor="#616161"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="onButtonClickedEnd"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/endTime"
+                    android:textSize="56sp"
+                    android:textColor="#616161"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""/>;
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/startTime"
-                android:text=""/>;
+                android:id="@+id/errorMessage"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:text=""/>
 
-        </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Event"
+                android:id="@+id/finishEvent"
+                android:onClick="setData"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint = "Time End:"
-            />
+        </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/errorMessage"
-            android:text=""/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Create Event"
-            android:id="@+id/finishEvent"
-            android:onClick="setData"/>
+
 
 
     </LinearLayout>
