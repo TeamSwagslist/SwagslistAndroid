@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,36 +10,81 @@
     android:orientation="vertical"
     tools:context="com.example.android.swagslist.RegisterPage">
 
-    <EditText
+    <View
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerInParent="true"
+        android:background="@android:color/white"
+        android:id="@+id/registercenter"/>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Username"
-        android:id="@+id/usernameInput"/>
+        android:orientation="vertical"
+        android:layout_above="@id/registercenter">
 
-    <EditText
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="USERNAME"
+            android:id="@+id/usernameInput"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="PASSWORD"
+            android:id="@+id/passwordInput"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="TYPE IN PASSWORD AGAIN"
+            android:id="@+id/repasswordInput"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:id="@+id/passwordInput"/>
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Type in password again"
-        android:id="@+id/repasswordInput"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/incorrectPassword"
+            android:textSize="16sp"
+            android:textColor="#616161"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="true"
+            android:text=""/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textBox"
-        android:text=""/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textBox"
+            android:textSize="16sp"
+            android:textColor="#616161"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="true"
+            android:text=""/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:id="@+id/submitButton"
-        android:onClick="setData" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:textSize="14sp"
+            android:textColor="#E0E0E0"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="true"
+            android:id="@+id/submitButton"
+            android:onClick="setData" />
 
+    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

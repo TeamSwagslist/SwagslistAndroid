@@ -30,7 +30,7 @@ public class TimePickerFragment extends DialogFragment
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         TextView time = (TextView) getActivity().findViewById(R.id.startTime);
-        String hourmin = view.getHour() + ": " + view.getMinute();
+        String hourmin = view.getHour() + ":" + view.getMinute();
         time.setText(hourmin);
 
         final Calendar calendar = Calendar.getInstance();
