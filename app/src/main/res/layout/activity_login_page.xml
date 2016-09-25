@@ -48,6 +48,16 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/incorrectPassword"
+            android:text=""
+            android:textSize="16sp"
+            android:textColor="#616161"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="true"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,11 +68,7 @@
             android:textAllCaps="true"
             android:id="@+id/submitButton"
             android:onClick="setData" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/incorrectPassword"
-            android:text=""/>
+
 
     </LinearLayout>
 
